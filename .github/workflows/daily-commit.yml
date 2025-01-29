@@ -3,6 +3,7 @@ name: Daily Commit
 on:
   schedule:
     - cron: '0 6 * * *' # Codziennie o 06:00 UTC (07:00 PL)
+  workflow_dispatch: # To dodaje możliwość ręcznego uruchamiania
 
 jobs:
   commit:
