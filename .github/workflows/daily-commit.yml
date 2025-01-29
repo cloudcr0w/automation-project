@@ -1,0 +1,32 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # Codziennie o 06:00 UTC (07:00 PL)
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Ensure daily_commit.txt exists
+        run: touch daily_commit.txt
+
+      - name: Update file
+        run: echo "$(date)" >> daily_commit.txt
+
+      - name: Commit and push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "cloudcr0w"
+          git config --global user.email "adamwronowy@gmail.com"
+          git config --global credential.helper store
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/cloudcr0w/automation-project.git
+          git add daily_commit.txt
+          git commit -m "Automated commit on $(date)" || exit 0
+          git push origin main
