@@ -29,5 +29,7 @@ jobs:
           git config --global credential.helper store
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/cloudcr0w/automation-project.git
           git add daily_commit.txt
-          git commit -m "Automated commit on $(date)" || exit 0
+          git commit -m "I am not available. To be honest, I am on holiday and will be back on February 4th!" || exit 0
           git push origin main
+
+
