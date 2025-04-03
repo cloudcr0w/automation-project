@@ -29,7 +29,7 @@ jobs:
           git config --global credential.helper store
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/cloudcr0w/automation-project.git
           git add daily_commit.txt
-          git commit -m "I am not available. To be honest, I am on holiday with my family and will be back on April 7th!" || exit 0
+          git commit -m "I am not available. To be honest, I am on holiday with my family and will be back on April 7th." || exit 0
           git push origin main
 
 
